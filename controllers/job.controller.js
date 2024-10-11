@@ -20,4 +20,21 @@ const listJobHandler = async (req, res) => {
   }
 };
 
-export { listJobHandler };
+const getAllJobHandler = async (req, res) => {
+  try {
+    const allJobs = await Job.find();
+
+    if (!allJobs) {
+      return res.status(200).json("No Job Listed Yet");
+    }
+
+    return res.status(200).json({
+      message: "job Fetch succesfull",
+      allJobs,
+    });
+  } catch (err) {
+    return res.status(500).json("Something went wrong while fetching Jobs");
+  }
+};
+
+export { listJobHandler, getAllJobHandler };

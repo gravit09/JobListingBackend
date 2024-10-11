@@ -8,7 +8,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 import jobRouter from "./routes/job.routes.js";
+import userRouter from "./routes/user.routes.js";
 app.use("/api/job", jobRouter);
+app.use("/api/user", userRouter);
 
 connectDb()
   .then(() => {
