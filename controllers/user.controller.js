@@ -7,6 +7,7 @@ const userSchema = zod.object({
   password: zod.string().min(8),
 });
 
+//User Regstration
 const userRegisterHandler = async (req, res) => {
   const userData = req.body;
   const isValidData = userSchema.safeParse(userData);
@@ -43,6 +44,7 @@ const userRegisterHandler = async (req, res) => {
   });
 };
 
+//User Login
 const loginUserHandler = async (req, res) => {
   const { email, password } = req.body;
 

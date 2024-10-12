@@ -1,5 +1,6 @@
 import { Job } from "../models/job.models.js";
 
+//To List an Job
 const listJobHandler = async (req, res) => {
   try {
     const data = req.body;
@@ -20,6 +21,7 @@ const listJobHandler = async (req, res) => {
   }
 };
 
+//To get all the Jobs
 const getAllJobHandler = async (req, res) => {
   try {
     const allJobs = await Job.find();

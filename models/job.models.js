@@ -1,43 +1,14 @@
 import mongoose from "mongoose";
-
+import { Organization } from "./org.models.js";
 const jobListingSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  company: {
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    size: {
-      type: String,
-      required: true,
-    },
-    founded: {
-      type: Number,
-      required: true,
-    },
-    type: {
-      type: String,
-      required: true,
-    },
-    industry: {
-      type: String,
-      required: true,
-    },
-    sector: {
-      type: String,
-      required: true,
-    },
-    revenue: {
-      type: String,
-      required: true,
-    },
+  organization: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Organization",
+    required: true,
   },
   location: {
     type: String,
