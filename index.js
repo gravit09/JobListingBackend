@@ -9,8 +9,10 @@ app.use(cors());
 
 import jobRouter from "./routes/job.routes.js";
 import userRouter from "./routes/user.routes.js";
+import orgRouter from "./routes/org.routes.js";
 app.use("/api/job", jobRouter);
 app.use("/api/user", userRouter);
+app.use("/api/org", orgRouter);
 
 connectDb()
   .then(() => {

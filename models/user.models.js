@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
   },
   organization: {
     type: String,
-    unique: true,
     trim: true,
+    default: null,
   },
   password: {
     type: String,
@@ -44,7 +44,7 @@ userSchema.methods.isPasswordCorrect = async function (inputPassword) {
 userSchema.methods.generateJWT = function () {
   return Jwt.sign(
     {
-      _id: this._id,
+      userId: this._id,
     },
     process.env.JSON_SECRET,
     {
