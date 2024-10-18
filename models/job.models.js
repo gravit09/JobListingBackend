@@ -10,6 +10,10 @@ const jobListingSchema = new mongoose.Schema({
     ref: "Organization",
     required: true,
   },
+  organizationName: {
+    type: String,
+    required: true,
+  },
   location: {
     type: String,
     required: true,
@@ -29,6 +33,10 @@ const jobListingSchema = new mongoose.Schema({
       required: true,
     },
   },
+  description: {
+    type: String,
+    required: true,
+  },
   responsibilities: {
     type: [String],
     required: true,
@@ -39,7 +47,7 @@ const jobListingSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
 });
 
