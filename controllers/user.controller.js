@@ -51,13 +51,19 @@ const loginUserHandler = async (req, res) => {
   const checkUser = await User.findOne({ email });
 
   if (!checkUser) {
-    return res.status(200).json("User With This Email does't Exsist");
+    return res.status(200).json({
+      success: false,
+      message: "Invalid email",
+    });
   }
 
   const isPassValid = await checkUser.isPasswordCorrect(password);
 
   if (!isPassValid) {
-    return res.status(401).json("Incorrect Password");
+    return res.status(200).json({
+      success: false,
+      message: "invalid pass",
+    });
   }
 
   const token = await checkUser.generateJWT(checkUser._id);
@@ -67,10 +73,10 @@ const loginUserHandler = async (req, res) => {
     secure: true,
   };
 
-  return res
-    .status(200)
-    .cookie("AccessToken", token, options)
-    .json("User Logged in Successfull");
+  return res.status(200).cookie("AccessToken", token, options).json({
+    success: true,
+    message: "User logged in",
+  });
 };
 
 export { userRegisterHandler, loginUserHandler };
